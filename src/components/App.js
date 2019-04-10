@@ -4,13 +4,14 @@ import SearchBar from './SearchBar'
 import ImageList from './ImageList'
 
 class App extends React.Component {
-  onSearchSubmit(term) {
-    axios.get('https://api.unsplash.com/search/photos', {
+  async onSearchSubmit(term) {
+    const response = await axios.get('https://api.unsplash.com/search/photos', {
       params: { query: term },
       headers: {
         Authorization: 'Client-ID 37ad812b117ddfc782666b8f04441f1acdd0ea7c62597c1defbcf7f13341b014'
       }
     })
+    console.log(response.data.results)
   }
   render() {
     return (
